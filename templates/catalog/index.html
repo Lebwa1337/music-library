@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Taxi Service Home</h1>
+  <p>Welcome to Best Taxi Ever!</p>
+  <h2>Dynamic content</h2>
+  <p>The Taxi service has the following record counts:</p>
+  <ul>
+    <li><strong>MusicAuthors:</strong> {{ num_authors }}</li>
+    <li><strong>Albums:</strong> {{ num_albums }}</li>
+    <li><strong>Genres:</strong> {{ num_genres }}</li>
+    <li><strong>Tracks:</strong> {{ num_tracks }}</li>
+  </ul>
+
+{% endblock %}
