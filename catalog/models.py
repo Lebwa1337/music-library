@@ -38,10 +38,3 @@ class Album(models.Model):
 
     def __str__(self):
         return f"Album '{self.name}' was released on {self.release_date}"
-
-
-
-
-
-
-
