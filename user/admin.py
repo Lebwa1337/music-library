@@ -17,7 +17,7 @@ class MusicAuthorAdmin(UserAdmin):
                 {
                     "fields": (
                         "band_members",
-                        "label",
+                        "record_label",
                         "creation_date",
                     )
                 },
