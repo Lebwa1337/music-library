@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,6 +24,8 @@ SECRET_KEY = 'django-insecure-cf$p8hrrdk%d_(lqybk5b8&^8am7q*i%bv1*t5!&&+rrvmltkb
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+ASSETS_ROOT = '/static/assets'
 
 # Application definition
 
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'catalog.context_processors.cfg_assets_root',
             ],
         },
     },
@@ -103,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = "user.MusicAuthor"
 
 LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
