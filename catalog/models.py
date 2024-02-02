@@ -1,19 +1,14 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from user.models import MusicAuthor
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=63, unique=True)
 
     def __str__(self):
         return self.name
-
-
-class MusicAuthor(AbstractUser):
-    creation_date = models.DateField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.username}"
 
 
 class Track(models.Model):
