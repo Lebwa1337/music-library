@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
+
+
 from catalog.models import (
     MusicAuthor,
     Album,
@@ -22,3 +25,6 @@ def index(request):
     }
 
     return render(request, "catalog/index.html", context=context)
+
+
+

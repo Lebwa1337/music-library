@@ -27,6 +27,7 @@ class Track(models.Model):
 
 class Album(models.Model):
     name = models.CharField(max_length=255)
+    author = models.ForeignKey(MusicAuthor, on_delete=models.CASCADE)
     tracks = models.ForeignKey(Track, on_delete=models.CASCADE)
     description = models.TextField()
     release_date = models.DateField()

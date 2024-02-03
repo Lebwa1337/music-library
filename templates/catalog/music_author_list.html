@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>Music artists list
+    <a href="{% url 'user:author-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if musicauthor_list %}
+    <ul>
+      {% for artist in musicauthor_list %}
+        <li>
+          <a href="{% url "user:author-detail" pk=artist.id %}">{{ artist.username }}</a>
+          ({{ artist.first_name }} {{ artist.last_name }})
+          {% if user.username == artist.username %}
+            (Me)
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no artist in gallery</p>
+  {% endif %}
+{% endblock %}
