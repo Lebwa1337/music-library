@@ -9,7 +9,7 @@ from catalog.models import (
     Genre,
     Track
 )
-from catalog.forms import AlbumCreationForm, AlbumUpdateForm
+from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm
 
 
 def index(request):
@@ -59,4 +59,37 @@ class AlbumUpdateView(generic.UpdateView):
 class AlbumDeleteView(generic.DeleteView):
     model = Album
     template_name = "catalog/album_delete_confirm.html"
-    success_url = reverse_lazy("catalog:index")
+    success_url = reverse_lazy("catalog:album-list")
+
+
+class TrackListView(generic.ListView):
+    model = Track
+    template_name = "catalog/track_list.html"
+    paginate_by = 5
+
+
+class TrackCreateView(generic.CreateView):
+    model = Track
+    form_class = TrackForm
+    template_name = "creation_forms/track_form.html"
+    success_url = reverse_lazy("catalog:track-list")
+
+
+class TrackDetailView(generic.DetailView):
+    model = Track
+    template_name = "catalog/track_detail.html"
+
+
+class TrackUpdateView(generic.UpdateView):
+    model = Track
+    form_class = TrackForm
+    template_name = "creation_forms/track_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("catalog:track-detail", kwargs={"pk": self.object.pk})
+
+
+class TrackDeleteView(generic.DeleteView):
+    model = Track
+    template_name = "catalog/track_delete_confirm.html"
+    success_url = reverse_lazy("catalog:track-list")

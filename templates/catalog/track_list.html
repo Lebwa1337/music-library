@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>Tracks list
+    <a href="{% url 'catalog:track-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if track_list %}
+    <ul>
+      {% for track in track_list %}
+        <li>
+          <a href="{% url "catalog:track-detail" pk=track.id %}">{{ track.name }}</a>
+          by "{{ track.author }}"
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no tracks in gallery</p>
+  {% endif %}
+{% endblock %}
