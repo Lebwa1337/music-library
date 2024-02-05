@@ -27,10 +27,14 @@ class Track(models.Model):
 
 class Album(models.Model):
     name = models.CharField(max_length=255)
-    author = models.ForeignKey(MusicAuthor, on_delete=models.CASCADE)
+    author = models.ForeignKey(MusicAuthor, on_delete=models.CASCADE, null=True, blank=True)
     tracks = models.ForeignKey(Track, on_delete=models.CASCADE)
     description = models.TextField()
     release_date = models.DateField()
+
+    def delete(self, *args, **kwargs):
+        Album.objects.filter(author=self).delete()
+        super().delete(*args, **kwargs)
 
     def __str__(self):
         return f"Album '{self.name}' was released on {self.release_date}"

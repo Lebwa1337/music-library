@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Blog Author {% endblock %} 
+{% block title %} Detail {% endblock %} 
 
 {% block body_class %} blog-author {% endblock %}
 
@@ -24,12 +24,15 @@
         <div class="row">
           <div class="col-12 mx-auto">
             <div class="mt-n8 mt-md-n9 text-center">
-              <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="{{ ASSETS_ROOT }}/img/bruce-mars.jpg" alt="bruce" loading="lazy">
+              <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="{{ ASSETS_ROOT }}/img/Metallica_logo.jpg" alt="bruce" loading="lazy">
             </div>
             <div class="row py-5">
               <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
                 <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h3 class="mb-0">{{ musicauthor.username }}</h3>
+                  <h3 class="mb-0">{{ musicauthor.username }}
+                    <a href="{% url "user:author-update" pk=musicauthor.id %}">Update</a>
+                    <a href="{% url "user:author-delete" pk=musicauthor.id %}">Delete</a>
+                  </h3>
                 </div>
                 <div class="row mb-4">
                   <div class="col-auto">
@@ -46,11 +49,6 @@
                   </div>
                 </div>
                 <p class="text-lg mb-0">
-                  Decisions: If you can’t decide, the answer is no.
-                  If two equally difficult paths, choose the one more
-                  painful in the short term (pain avoidance is creating
-                  an illusion of equality). Choose the path that leaves
-                  you more equanimous. <br>
                   <strong>Creation date:</strong>{{ musicauthor.creation_date }} <br>
                   <strong>Members:</strong>
                   {{ musicauthor.band_members }}

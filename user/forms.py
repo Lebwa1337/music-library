@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.contrib.auth.models import User
 
 from user.models import MusicAuthor
 
@@ -16,3 +17,13 @@ class MusicAuthorCreationForm(UserCreationForm):
             "band_members",
             "record_label",
         )
+
+
+class MusicAuthorUpdateForm(forms.ModelForm):
+    creation_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    band_members = forms.CharField(widget=forms.Textarea(attrs={"rows": 4}))
+    record_label = forms.CharField(widget=forms.Textarea(attrs={"rows": 1}))
+
+    class Meta:
+        model = MusicAuthor
+        fields = ["band_members", "record_label", "creation_date"]
