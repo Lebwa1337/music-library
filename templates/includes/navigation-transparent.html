@@ -34,11 +34,11 @@
                 <h6 class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1">
                   Landing Pages
                 </h6>
-                <a href="/about-us.html" class="dropdown-item border-radius-md">
-                  <span>About Us</span>
+                <a href="{% url 'user:author-list' %}" class="dropdown-item border-radius-md">
+                  <span>Music Artists</span>
                 </a>
-                <a href="/contact-us.html" class="dropdown-item border-radius-md">
-                  <span>Contact Us</span>
+                <a href="{% url 'catalog:album-list' %}" class="dropdown-item border-radius-md">
+                  <span>Album list</span>
                 </a>
                 <a href="/author.html" class="dropdown-item border-radius-md">
                   <span>Author</span>

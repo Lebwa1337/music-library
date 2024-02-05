@@ -21,7 +21,7 @@ class MusicAuthorCreateView(generic.CreateView):
     model = MusicAuthor
     form_class = MusicAuthorCreationForm
     template_name = "creation_forms/Author_form.html"
-    success_url = reverse_lazy("catalog:author-list")
+    success_url = reverse_lazy("user:author-list")
     queryset = MusicAuthor.objects.all().select_related("Album")
 
 

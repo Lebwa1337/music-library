@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <h1>Album list
+    <a href="{% url 'catalog:album-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if album_list %}
+    <ul>
+      {% for album in album_list %}
+        <li>
+          <a href="{% url "catalog:album-detail" pk=album.id %}">{{ album.name }}</a>
+          by "{{ album.author }}"
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no album in gallery</p>
+  {% endif %}
+{% endblock %}
