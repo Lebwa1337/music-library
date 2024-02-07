@@ -2,16 +2,17 @@
 {% block content %}
   {% include 'includes/navigation.html' %}
   <section class="intro">
-  <div class="bg-image h-100" style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');">
-    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
-      <div class="container">
-        <div class="row justify-content-center">
-          <a href="{% url "catalog:album-create" %}"><h3>Create</h3></a>
-          <div class="col-12">
-            <div class="card bg-dark shadow-2-strong">
-              <div class="card-body">
-                <div class="table-responsive">
-                  {% if album_list %}
+    <div class="bg-image h-100"
+         style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+        <div class="container">
+          <div class="row justify-content-center">
+            <a href="{% url "catalog:album-create" %}"><h3>Create</h3></a>
+            <div class="col-12">
+              <div class="card bg-dark shadow-2-strong">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    {% if album_list %}
                       <table class="table table-borderless text-white mb-0">
                         <thead>
                         <tr>
@@ -23,32 +24,34 @@
                         </thead>
                         <tbody>
                         {% for album in album_list %}
-                        	<tr>
-                          <th scope="row"><a href="{% url 'catalog:album-detail' pk=album.id %}">{{ album.name }}</a></th>
-                          <th scope="row">{{ album.author.username }}</th>
-                          <th scope="row">
-                            {% if album.tracks.objects.count %}
-                            	{{ album.tracks.objects.count}}
+                          <tr>
+                            <th scope="row"><a href="{% url 'catalog:album-detail' pk=album.id %}">{{ album.name }}</a>
+                            </th>
+                            <th scope="row">{{ album.author.username }}</th>
+                            <th scope="row">
+                              {% if album.tracks_set.count %}
+                                {{ album.tracks.objects.count }}
                               {% else %}
-                              <p>0</p>
-                            {% endif %} 
-                          </th>
-                          <th scope="row">{{ album.release_date }}</th>
-                        </tr>
+                                <p>0</p>
+                              {% endif %}
+                            </th>
+                            <th scope="row">{{ album.release_date }}</th>
+                          </tr>
                         {% endfor %}
                         </tbody>
                       </table>
                     {% else %}
                       <p style="text-align: center">There is no albums available</p>
                     {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
+            {% include "includes/pagination.html" %}
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endblock %}
 
