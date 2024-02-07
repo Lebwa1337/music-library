@@ -1,24 +1,54 @@
 {% extends "layouts/base.html" %}
-
 {% block content %}
-  <h1>Music artists list
-    <a href="{% url 'user:author-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  {% if musicauthor_list %}
-    <ul>
-      {% for artist in musicauthor_list %}
-        <li>
-          <a href="{% url "user:author-detail" pk=artist.id %}">{{ artist.username }}</a>
-          ({{ artist.first_name }} {{ artist.last_name }})
-          {% if user.username == artist.username %}
-            (Me)
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no artist in gallery</p>
-  {% endif %}
+  {% include 'includes/navigation.html' %}
+  <section class="intro">
+    <div class="bg-image h-100"
+         style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+        <div class="container">
+          <div class="row justify-content-center">
+            <a href="{% url "catalog:album-create" %}"><h3>Create</h3></a>
+            <div class="col-12">
+              <div class="card bg-dark shadow-2-strong">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    {% if musicauthor_list %}
+                      <table class="table table-borderless text-white mb-0">
+                        <thead>
+                        <tr>
+                          <th scope="col">Author</th>
+                          <th scope="col">Record label</th>
+                          <th scope="col">Creation date</th>
+                          <th scope="col">Number of albums</th>
+                          <th scope="col">Number of tracks</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for author in musicauthor_list %}
+                          <tr>
+                            <th scope="row"><a
+                                href="{% url 'user:author-detail' pk=author.id %}">{{ author.username }}</a></th>
+                            <th scope="row">{{ author.record_label }}</th>
+                            <th scope="row">{{ author.creation_date }}</th>
+                            <th scope="row">
+                              {{ author.album_set.count }}
+                            </th>
+                            <th scope="row">{{ author.track_set.count }}</th>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    {% else %}
+                      <p style="text-align: center">There is no authors available</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
+

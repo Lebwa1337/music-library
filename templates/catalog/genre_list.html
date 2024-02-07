@@ -6,40 +6,25 @@
     <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
       <div class="container">
         <div class="row justify-content-center">
-          <a href="{% url "catalog:album-create" %}"><h3>Create</h3></a>
           <div class="col-12">
             <div class="card bg-dark shadow-2-strong">
               <div class="card-body">
                 <div class="table-responsive">
-                  {% if album_list %}
+                  {% if genre_list %}
                       <table class="table table-borderless text-white mb-0">
                         <thead>
                         <tr>
-                          <th scope="col">Album title</th>
-                          <th scope="col">Author</th>
-                          <th scope="col">Album tracks</th>
-                          <th scope="col">Release date</th>
+                          <th scope="col">Genre name</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for album in album_list %}
+                        {% for genre in genre_list %}
                         	<tr>
-                          <th scope="row"><a href="{% url 'catalog:album-detail' pk=album.id %}">{{ album.name }}</a></th>
-                          <th scope="row">{{ album.author.username }}</th>
-                          <th scope="row">
-                            {% if album.tracks.objects.count %}
-                            	{{ album.tracks.objects.count}}
-                              {% else %}
-                              <p>0</p>
-                            {% endif %} 
-                          </th>
-                          <th scope="row">{{ album.release_date }}</th>
+                          <th scope="row"><a href="{% url 'catalog:genre-detail' pk=genre.id %}">{{ genre.name }}</a></th>
                         </tr>
                         {% endfor %}
                         </tbody>
                       </table>
-                    {% else %}
-                      <p style="text-align: center">There is no albums available</p>
                     {% endif %}
                 </div>
               </div>
