@@ -13,9 +13,9 @@ from catalog.views import (
     TrackDeleteView,
     GenreListView,
     GenreCreateView,
-    GenreDetailView,
     GenreUpdateView,
-    GenreDeleteView
+    GenreDeleteView,
+    toggle_assign_to_album
 
 )
 
@@ -33,9 +33,9 @@ urlpatterns = [
     path("track/<int:pk>/delete/", TrackDeleteView.as_view(), name='track-delete'),
     path("genre/", GenreListView.as_view(), name='genre-list'),
     path("genre/create/", GenreCreateView.as_view(), name="genre-create"),
-    path("genre/<int:pk>/detail/", GenreDetailView.as_view(), name='genre-detail'),
     path("genre/<int:pk>/update/", GenreUpdateView.as_view(), name='genre-update'),
-    path("genre/<int:pk>/delete/", GenreDeleteView.as_view(), name='genre-delete')
+    path("genre/<int:pk>/delete/", GenreDeleteView.as_view(), name='genre-delete'),
+    path("album/<int:pk>/detail/toggle-assign/", toggle_assign_to_album, name='toggle-album-assign')
 
 ]
 

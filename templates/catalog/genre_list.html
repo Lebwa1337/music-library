@@ -16,12 +16,16 @@
                         <thead>
                         <tr>
                           <th scope="col">Genre name</th>
+                          <th scope="col">Update</th>
+                          <th scope="col">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for genre in genre_list %}
                         	<tr>
-                          <th scope="row"><a href="{% url 'catalog:genre-detail' pk=genre.id %}">{{ genre.name }}</a></th>
+                          <th scope="row">{{ genre.name }}</th>
+                          <th scope="row"><a href="{% url 'catalog:genre-update' pk=genre.id %}">Update</a></th>
+                          <th scope="row"><a href="{% url 'catalog:genre-delete' pk=genre.id %}" style="color: red">Delete</a></th>
                         </tr>
                         {% endfor %}
                         </tbody>

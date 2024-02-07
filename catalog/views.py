@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -63,6 +64,15 @@ class AlbumDeleteView(generic.DeleteView):
     success_url = reverse_lazy("catalog:album-list")
 
 
+def toggle_assign_to_album(request, pk):
+    author = MusicAuthor.objects.get(id=request.user.id)
+    if Album.objects.get(id=pk) in author.album_set.all():
+        author.album_set.remove(Album.objects.get(id=pk))
+    else:
+        author.album_set.add(Album.objects.get(id=pk))
+    return HttpResponseRedirect(reverse_lazy("catalog:album-detail", args=[pk]))
+
+
 class TrackListView(generic.ListView):
     model = Track
     template_name = "catalog/track_list.html"
@@ -108,12 +118,6 @@ class GenreCreateView(generic.CreateView):
     form_class = GenreForm
     template_name = "creation_forms/genre_form.html"
     success_url = reverse_lazy("catalog:genre-list")
-
-
-class GenreDetailView(generic.DetailView):
-    model = Genre
-    template_name = "catalog/genre_detail.html"
-    # queryset = Genre.objects.all().prefetch_related("Tracks")
 
 
 class GenreUpdateView(generic.UpdateView):
