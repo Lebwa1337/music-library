@@ -9,7 +9,7 @@ from catalog.models import (
     Genre,
     Track
 )
-from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm
+from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm, GenreForm
 
 
 def index(request):
@@ -33,6 +33,7 @@ class AlbumListView(generic.ListView):
     model = Album
     template_name = "catalog/album_list.html"
     paginate_by = 5
+    queryset = Album.objects.all().select_related("tracks")
 
 
 class AlbumCreateView(generic.CreateView):
@@ -66,6 +67,7 @@ class TrackListView(generic.ListView):
     model = Track
     template_name = "catalog/track_list.html"
     paginate_by = 5
+    queryset = Track.objects.all().prefetch_related("genre")
 
 
 class TrackCreateView(generic.CreateView):
@@ -93,3 +95,37 @@ class TrackDeleteView(generic.DeleteView):
     model = Track
     template_name = "catalog/track_delete_confirm.html"
     success_url = reverse_lazy("catalog:track-list")
+
+
+class GenreListView(generic.ListView):
+    model = Genre
+    template_name = "catalog/genre_list.html"
+    paginate_by = 5
+
+
+class GenreCreateView(generic.CreateView):
+    model = Genre
+    form_class = GenreForm
+    template_name = "creation_forms/genre_form.html"
+    success_url = reverse_lazy("catalog:genre-list")
+
+
+class GenreDetailView(generic.DetailView):
+    model = Genre
+    template_name = "catalog/genre_detail.html"
+    # queryset = Genre.objects.all().prefetch_related("Tracks")
+
+
+class GenreUpdateView(generic.UpdateView):
+    model = Genre
+    form_class = GenreForm
+    template_name = "creation_forms/genre_form.html"
+
+    def get_success_url(self):
+        return reverse_lazy("catalog:genre-detail", kwargs={"pk": self.object.pk})
+
+
+class GenreDeleteView(generic.DeleteView):
+    model = Genre
+    template_name = "catalog/genre_delete_confirm.html"
+    success_url = reverse_lazy("catalog:genre-list")

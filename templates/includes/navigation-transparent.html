@@ -37,11 +37,14 @@
                 <a href="{% url 'user:author-list' %}" class="dropdown-item border-radius-md">
                   <span>Music Artists</span>
                 </a>
+                <a href="{% url 'catalog:album-list' %}" class="dropdown-item border-radius-md">
+                  <span>Album list</span>
+                </a>
                 <a href="{% url 'catalog:track-list' %}" class="dropdown-item border-radius-md">
                   <span>Tracks</span>
                 </a>
-                <a href="/author.html" class="dropdown-item border-radius-md">
-                  <span>Author</span>
+                <a href="{% url 'catalog:genre-list' %}" class="dropdown-item border-radius-md">
+                  <span>Genres</span>
                 </a>
 
                 {% if request.user.is_authenticated %}

@@ -1,0 +1,44 @@
+{% extends "layouts/base-fullscreen.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block title %} Sign UP {% endblock %}
+
+{% block body_class %} sign-in-basic {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  {% include 'includes/navigation-transparent.html' %}
+
+  <section>
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <h3 class="text-center">Delete Genre</h3>
+          <form role="form" id="contact-form" method="post" action="">
+            {% csrf_token %}
+            <section class="py-7 mt-3">
+              <div class="container">
+                <div class="row justify-space-between text-center py-2">
+                  <div class="col-12 mx-auto">
+
+                    <input type="submit" class="btn bg-gradient-danger w-auto me-2" value="Yes, delete">
+
+                    <a href="{% url 'catalog:genre-detail' pk=genre.id %}" class="btn bg-gradient-info w-auto me-2">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
