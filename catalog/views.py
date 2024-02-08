@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -13,6 +15,7 @@ from catalog.models import (
 from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm, GenreForm
 
 
+@login_required
 def index(request):
 
     num_authors = MusicAuthor.objects.count()
@@ -30,26 +33,25 @@ def index(request):
     return render(request, "catalog/index.html", context=context)
 
 
-class AlbumListView(generic.ListView):
+class AlbumListView(LoginRequiredMixin, generic.ListView):
     model = Album
     template_name = "catalog/album_list.html"
     paginate_by = 5
-    queryset = Album.objects.all().select_related("tracks")
 
 
-class AlbumCreateView(generic.CreateView):
+class AlbumCreateView(LoginRequiredMixin, generic.CreateView):
     model = Album
     template_name = "creation_forms/album_form.html"
     form_class = AlbumCreationForm
     success_url = reverse_lazy("catalog:album-list")
 
 
-class AlbumDetailView(generic.DetailView):
+class AlbumDetailView(LoginRequiredMixin, generic.DetailView):
     model = Album
     template_name = "catalog/album_detail.html"
 
 
-class AlbumUpdateView(generic.UpdateView):
+class AlbumUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Album
     template_name = "creation_forms/album_form.html"
     form_class = AlbumUpdateForm
@@ -58,7 +60,7 @@ class AlbumUpdateView(generic.UpdateView):
         return reverse_lazy("catalog:album-detail", kwargs={"pk": self.object.pk})
 
 
-class AlbumDeleteView(generic.DeleteView):
+class AlbumDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Album
     template_name = "catalog/album_delete_confirm.html"
     success_url = reverse_lazy("catalog:album-list")
@@ -66,33 +68,34 @@ class AlbumDeleteView(generic.DeleteView):
 
 def toggle_assign_to_album(request, pk):
     author = MusicAuthor.objects.get(id=request.user.id)
-    if Album.objects.get(id=pk) in author.album_set.all():
-        author.album_set.remove(Album.objects.get(id=pk))
+    if Album.objects.get(id=pk) in author.albums.all():
+        author.albums.remove(Album.objects.get(id=pk))
     else:
-        author.album_set.add(Album.objects.get(id=pk))
+        author.albums.add(Album.objects.get(id=pk))
     return HttpResponseRedirect(reverse_lazy("catalog:album-detail", args=[pk]))
 
 
-class TrackListView(generic.ListView):
+class TrackListView(LoginRequiredMixin, generic.ListView):
     model = Track
     template_name = "catalog/track_list.html"
     paginate_by = 5
     queryset = Track.objects.all().prefetch_related("genre")
 
 
-class TrackCreateView(generic.CreateView):
+class TrackCreateView(LoginRequiredMixin, generic.CreateView):
     model = Track
     form_class = TrackForm
     template_name = "creation_forms/track_form.html"
     success_url = reverse_lazy("catalog:track-list")
+    queryset = Track.objects.all().select_related("track")
 
 
-class TrackDetailView(generic.DetailView):
+class TrackDetailView(LoginRequiredMixin, generic.DetailView):
     model = Track
     template_name = "catalog/track_detail.html"
 
 
-class TrackUpdateView(generic.UpdateView):
+class TrackUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Track
     form_class = TrackForm
     template_name = "creation_forms/track_form.html"
@@ -101,26 +104,26 @@ class TrackUpdateView(generic.UpdateView):
         return reverse_lazy("catalog:track-detail", kwargs={"pk": self.object.pk})
 
 
-class TrackDeleteView(generic.DeleteView):
+class TrackDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Track
     template_name = "catalog/track_delete_confirm.html"
     success_url = reverse_lazy("catalog:track-list")
 
 
-class GenreListView(generic.ListView):
+class GenreListView(LoginRequiredMixin, generic.ListView):
     model = Genre
     template_name = "catalog/genre_list.html"
     paginate_by = 5
 
 
-class GenreCreateView(generic.CreateView):
+class GenreCreateView(LoginRequiredMixin, generic.CreateView):
     model = Genre
     form_class = GenreForm
     template_name = "creation_forms/genre_form.html"
     success_url = reverse_lazy("catalog:genre-list")
 
 
-class GenreUpdateView(generic.UpdateView):
+class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Genre
     form_class = GenreForm
     template_name = "creation_forms/genre_form.html"
@@ -129,7 +132,7 @@ class GenreUpdateView(generic.UpdateView):
         return reverse_lazy("catalog:genre-detail", kwargs={"pk": self.object.pk})
 
 
-class GenreDeleteView(generic.DeleteView):
+class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
     template_name = "catalog/genre_delete_confirm.html"
     success_url = reverse_lazy("catalog:genre-list")
