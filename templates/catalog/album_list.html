@@ -2,8 +2,8 @@
 {% block content %}
   {% include 'includes/navigation.html' %}
   <section class="intro">
-    <div class="bg-image h-100"
-         style="background-image: url('https://mdbootstrap.com/img/Photos/new-templates/tables/img2.jpg');">
+    <div class="bg-image h-100 page-header"
+         style="background-image: url('{{ ASSETS_ROOT }}/img/turntable.webp');">
       <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
         <div class="container">
           <div class="row justify-content-center">
@@ -29,11 +29,7 @@
                             </th>
                             <th scope="row">{{ album.author.username }}</th>
                             <th scope="row">
-                              {% if album.tracks_set.count %}
-                                {{ album.tracks.objects.count }}
-                              {% else %}
-                                <p>0</p>
-                              {% endif %}
+                              {{ album.tracks.count }}
                             </th>
                             <th scope="row">{{ album.release_date }}</th>
                           </tr>
