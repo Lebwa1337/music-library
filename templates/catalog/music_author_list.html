@@ -31,9 +31,9 @@
                             <th scope="row">{{ author.record_label }}</th>
                             <th scope="row">{{ author.creation_date }}</th>
                             <th scope="row">
-                              {{ author.album_set.count }}
+                              {{ author.albums.count }}
                             </th>
-                            <th scope="row">{{ author.track_set.count }}</th>
+                            <th scope="row">{{ author.tracks.count }}</th>
                           </tr>
                         {% endfor %}
                         </tbody>

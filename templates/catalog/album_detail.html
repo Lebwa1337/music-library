@@ -34,7 +34,7 @@
                 <h3 class="mb-0">{{ album.name }}
                   <a href="{% url "catalog:album-update" pk=album.id %}">Update</a>
                   <a href="{% url "catalog:album-delete" pk=album.id %}">Delete</a>
-                  {% if album in request.user.album_set.all %}
+                  {% if album in request.user.albums.all %}
                     <a href="{% url 'catalog:toggle-album-assign' pk=album.id %}" class="btn btn-danger link-to-page">
                       Delete me from this album
                     </a>
@@ -48,18 +48,19 @@
               <div class="row mb-4">
                 <div class="col-auto">
                   <span>Author:</span>
-                  <span class="h6">{{ album.author }}</span>
+                  <span class="h6"><a href="{% url 'user:author-detail' pk=album.author.id %}">{{ album.author }}</a></span>
                 </div>
                 <div class="col-auto">
                   <span>Released date:</span>
                   <span class="h6">{{ album.release_date }}</span>
                 </div>
               </div>
+              <p>Tracks:</p>
               {% if album.tracks %}
                 <ul>
-                  {% for track in album.track_set %}
+                  {% for track in album.tracks.all %}
                     <li>
-                      {{ track.name }}
+                      <a href="{% url 'catalog:track-detail' pk=track.id %}">{{ track.name }}</a>
                     </li>
                   {% endfor %}
                 </ul>

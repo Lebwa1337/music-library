@@ -39,7 +39,7 @@
               <div class="row mb-4">
                 <div class="col-auto">
                   <span>Author:</span>
-                  <span class="h6">{{ track.author }}</span>
+                  <span class="h6"><a href="{% url 'user:author-detail' pk=track.author.id %}">{{ track.author }}</a></span>
                 </div>
                 <div class="col-auto">
                   <span>Duration:</span>
