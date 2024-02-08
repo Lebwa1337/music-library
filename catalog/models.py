@@ -11,11 +11,32 @@ class Genre(models.Model):
         return self.name
 
 
+class Album(models.Model):
+    name = models.CharField(max_length=255)
+    author = models.ForeignKey(
+        MusicAuthor,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='albums'
+    )
+    description = models.TextField()
+    release_date = models.DateField()
+
+    def __str__(self):
+        return f"Album '{self.name}' was released on {self.release_date}"
+
+
 class Track(models.Model):
     name = models.CharField(max_length=100)
-    duration = models.TimeField()
-    author = models.ForeignKey(MusicAuthor, on_delete=models.CASCADE)
-    genre = models.ManyToManyField(Genre)
+    duration = models.DurationField()
+    author = models.ForeignKey(
+        MusicAuthor,
+        on_delete=models.CASCADE,
+        related_name='tracks'
+    )
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='tracks')
+    genre = models.ManyToManyField(Genre, related_name='tracks')
     lyrics = models.TextField()
 
     class Meta:
@@ -25,12 +46,4 @@ class Track(models.Model):
         return f"{self.name} with duration {self.duration}"
 
 
-class Album(models.Model):
-    name = models.CharField(max_length=255)
-    author = models.ForeignKey(MusicAuthor, on_delete=models.CASCADE, null=True, blank=True)
-    tracks = models.ForeignKey(Track, on_delete=models.CASCADE, null=True, blank=True)
-    description = models.TextField()
-    release_date = models.DateField()
 
-    def __str__(self):
-        return f"Album '{self.name}' was released on {self.release_date}"
