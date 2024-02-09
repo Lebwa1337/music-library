@@ -26,3 +26,12 @@ class MusicAuthorUpdateForm(forms.ModelForm):
     class Meta:
         model = MusicAuthor
         fields = ["band_members", "record_label", "creation_date"]
+
+
+class MusicAuthorSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"})
+    )

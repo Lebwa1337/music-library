@@ -1,4 +1,5 @@
 {% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
 {% block content %}
   {% include 'includes/navigation.html' %}
   <section class="intro">
@@ -8,6 +9,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <a href="{% url "catalog:album-create" %}"><h3>Create</h3></a>
+            <div class="d-flex justify-content-center h-100">
+              <div class="search form-inline">
+                <form action="" method="get" class="form-inline">
+                  {{ search_form }}
+                  <input type="submit" value="🔍" class="btn btn-secondary">
+                </form>
+              </div>
+            </div>
             <div class="col-12">
               <div class="card bg-dark shadow-2-strong">
                 <div class="card-body">

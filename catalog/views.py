@@ -12,7 +12,8 @@ from catalog.models import (
     Genre,
     Track
 )
-from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm, GenreForm
+from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm, GenreForm, AlbumSearchForm, TrackSearchForm, \
+    GenreSearchForm
 
 
 @login_required
@@ -37,6 +38,23 @@ class AlbumListView(LoginRequiredMixin, generic.ListView):
     model = Album
     template_name = "catalog/album_list.html"
     paginate_by = 5
+    queryset = Album.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(AlbumListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = AlbumSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        form = AlbumSearchForm(self.request.GET)
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
 
 
 class AlbumCreateView(LoginRequiredMixin, generic.CreateView):
@@ -81,6 +99,22 @@ class TrackListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     queryset = Track.objects.all().prefetch_related("genre")
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TrackListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = TrackSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        form = TrackSearchForm(self.request.GET)
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
+
 
 class TrackCreateView(LoginRequiredMixin, generic.CreateView):
     model = Track
@@ -114,6 +148,23 @@ class GenreListView(LoginRequiredMixin, generic.ListView):
     model = Genre
     template_name = "catalog/genre_list.html"
     paginate_by = 5
+    queryset = Genre.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(GenreListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = GenreSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        form = GenreSearchForm(self.request.GET)
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
 
 
 class GenreCreateView(LoginRequiredMixin, generic.CreateView):

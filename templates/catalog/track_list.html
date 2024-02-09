@@ -8,6 +8,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <a href="{% url "catalog:track-create" %}"><h3>Create</h3></a>
+            <div class="d-flex justify-content-center h-100">
+              <div class="search form-inline">
+                <form action="" method="get" class="form-inline">
+                  {{ search_form }}
+                  <input type="submit" value="🔍" class="btn btn-secondary">
+                </form>
+              </div>
+            </div>
             <div class="col-12">
               <div class="card bg-dark shadow-2-strong">
                 <div class="card-body">
@@ -30,8 +38,10 @@
                             <th scope="row">{{ track.author }}</th>
                             <th scope="row">{{ track.duration }}</th>
                             <th scope="row">
-                              {{ track.genre }}
-                            </th>
+                              {% for genre in track.genre.all %}
+                                {{ genre }}
+                                </th>
+                              {% endfor %}
                           </tr>
                         {% endfor %}
                         </tbody>
@@ -42,7 +52,7 @@
                   </div>
                 </div>
               </div>
-            {% include "includes/pagination.html" %}
+              {% include "includes/pagination.html" %}
             </div>
           </div>
         </div>
