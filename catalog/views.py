@@ -16,7 +16,6 @@ from catalog.forms import AlbumCreationForm, AlbumUpdateForm, TrackForm, GenreFo
     GenreSearchForm
 
 
-@login_required
 def index(request):
 
     num_authors = MusicAuthor.objects.count()

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -6,7 +7,7 @@ from user.models import MusicAuthor
 
 
 # Create your views here.
-class MusicAuthorListView(generic.ListView):
+class MusicAuthorListView(LoginRequiredMixin, generic.ListView):
     model = MusicAuthor
     template_name = "catalog/music_author_list.html"
     paginate_by = 5
@@ -29,12 +30,12 @@ class MusicAuthorListView(generic.ListView):
         return self.queryset
 
 
-class MusicAuthorDetailView(generic.DetailView):
+class MusicAuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = MusicAuthor
     template_name = "catalog/music_author_detail.html"
 
 
-class MusicAuthorCreateView(generic.CreateView):
+class MusicAuthorCreateView(LoginRequiredMixin, generic.CreateView):
     model = MusicAuthor
     form_class = MusicAuthorCreationForm
     template_name = "creation_forms/Author_form.html"
@@ -42,7 +43,7 @@ class MusicAuthorCreateView(generic.CreateView):
     queryset = MusicAuthor.objects.all().select_related("Album")
 
 
-class MusicAuthorUpdateView(generic.UpdateView):
+class MusicAuthorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = MusicAuthor
     form_class = MusicAuthorUpdateForm
     template_name = "creation_forms/Author_form.html"
@@ -51,7 +52,7 @@ class MusicAuthorUpdateView(generic.UpdateView):
         return reverse_lazy("user:author-detail", kwargs={"pk": self.object.pk})
 
 
-class MusicAuthorDeleteView(generic.DeleteView):
+class MusicAuthorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = MusicAuthor
     template_name = "catalog/music_author_delete_confirm.html"
     success_url = reverse_lazy("catalog:index")
