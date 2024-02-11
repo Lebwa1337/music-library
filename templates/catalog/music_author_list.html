@@ -7,16 +7,16 @@
          style="background-image: url('{{ ASSETS_ROOT }}/img/turntable.webp')">
       <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
         <div class="container">
+          <a href="{% url "user:author-create" %}" class="btn btn-outline-primary btn-close-white btn-secondary"
+             style="color: #4a4a4a">
+            <h6>Create</h6></a>
           <div class="row justify-content-center">
-            <a href="{% url "user:author-create" %}" style="text-align: right; color: #4a4a4a"><h3>Create</h3></a>
-            <div class="d-flex justify-content-center h-100">
-              <div class="search form-inline">
-                <form action="" method="get" class="form-inline">
-                  {{ search_form }}
+          <form action="" method="get" class="form-inline">
+                  <div class="d-inline-block form-group">
+                    {{ search_form }}
+                  </div>
                   <input type="submit" value="🔍" class="btn btn-secondary">
                 </form>
-              </div>
-            </div>
             <div class="col-12">
               <div class="card bg-dark shadow-2-strong">
                 <div class="card-body">
@@ -36,7 +36,11 @@
                         {% for author in musicauthor_list %}
                           <tr>
                             <th scope="row"><a
-                                href="{% url 'user:author-detail' pk=author.id %}">{{ author.username }}</a></th>
+                                href="{% url 'user:author-detail' pk=author.id %}">{{ author.username }}</a>
+                              {% if author.username == request.user.username %}
+                                (me)
+                              {% endif %}
+                            </th>
                             <th scope="row">{{ author.record_label }}</th>
                             <th scope="row">{{ author.creation_date }}</th>
                             <th scope="row">
