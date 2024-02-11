@@ -30,10 +30,14 @@
           </div>
           <div class="row py-5">
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+              <h5>
+                <a href="{% url "catalog:album-update" pk=album.id %}">Update</a>
+                &nbsp;
+                <a href="{% url "catalog:album-delete" pk=album.id %}">Delete</a>
+              </h5>
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <h3 class="mb-0">{{ album.name }}
-                  <a href="{% url "catalog:album-update" pk=album.id %}">Update</a>
-                  <a href="{% url "catalog:album-delete" pk=album.id %}">Delete</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   {% if album in request.user.albums.all %}
                     <a href="{% url 'catalog:toggle-album-assign' pk=album.id %}" class="btn btn-danger link-to-page">
                       Delete me from this album
@@ -48,7 +52,11 @@
               <div class="row mb-4">
                 <div class="col-auto">
                   <span>Author:</span>
-                  <span class="h6"><a href="{% url 'user:author-detail' pk=album.author.id %}">{{ album.author }}</a></span>
+                  {% if album.author %}
+                    <span class="h6"><a href="{% url 'user:author-detail' pk=album.author.id %}">{{ album.author }}</a></span>
+                  {% else %}
+                    <span class="h6">There is no author for album</span>
+                  {% endif %}
                 </div>
                 <div class="col-auto">
                   <span>Released date:</span>

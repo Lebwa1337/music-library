@@ -30,16 +30,20 @@
           </div>
           <div class="row py-5">
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+              <h5>
+                <a href="{% url "catalog:track-update" pk=track.id %}" class="font-weight-bold">Update</a>
+                &nbsp;
+                <a href="{% url "catalog:track-delete" pk=track.id %}" class="font-weight-bold">Delete</a>
+              </h5>
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <h3 class="mb-0">{{ track.name }}
-                  <a href="{% url "catalog:track-update" pk=track.id %}">Update</a>
-                  <a href="{% url "catalog:track-delete" pk=track.id %}">Delete</a>
                 </h3>
               </div>
               <div class="row mb-4">
                 <div class="col-auto">
                   <span>Author:</span>
-                  <span class="h6"><a href="{% url 'user:author-detail' pk=track.author.id %}">{{ track.author }}</a></span>
+                  <span class="h6"><a
+                      href="{% url 'user:author-detail' pk=track.author.id %}">{{ track.author }}</a></span>
                 </div>
                 <div class="col-auto">
                   <span>Duration:</span>
@@ -47,11 +51,13 @@
                 </div>
                 <div class="col-auto">
                   <span>Genre:</span>
-                  <span class="h6">{{ track.genre }}</span>
+                  {% for genre in track.genre.all %}
+                    <span class="h6">{{ genre }};</span>
+                  {% endfor %}
                 </div>
               </div>
               <p class="text-lg mb-0">
-                <strong>Lyrics:</strong>{{ track.lyrics }}
+                <strong>Lyrics:</strong><br>{{ track.lyrics | linebreaksbr }}
               </p>
             </div>
           </div>

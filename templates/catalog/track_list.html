@@ -38,10 +38,8 @@
                             <th scope="row">{{ track.author }}</th>
                             <th scope="row">{{ track.duration }}</th>
                             <th scope="row">
-                              {% for genre in track.genre.all %}
-                                {{ genre }}
+                                {{ track.genre.all.first }}
                                 </th>
-                              {% endfor %}
                           </tr>
                         {% endfor %}
                         </tbody>

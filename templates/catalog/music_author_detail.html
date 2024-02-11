@@ -30,10 +30,13 @@
           </div>
           <div class="row py-5">
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+              <h5>
+                <a href="{% url "user:author-update" pk=musicauthor.id %}">Update</a>
+                &nbsp;
+                <a href="{% url "user:author-delete" pk=musicauthor.id %}">Delete</a>
+              </h5>
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <h3 class="mb-0">{{ musicauthor.username }}
-                  <a href="{% url "user:author-update" pk=musicauthor.id %}">Update</a>
-                  <a href="{% url "user:author-delete" pk=musicauthor.id %}">Delete</a>
                 </h3>
               </div>
               <div class="row mb-4">
@@ -54,15 +57,14 @@
                 <strong>Albums:</strong>
               <ul>
                 {% for album in musicauthor.albums.all %}
-                	<li>
+                  <li>
                     <a href="{% url 'catalog:album-detail' pk=album.id %}">{{ album }}</a>
                   </li>
                 {% endfor %}
               </ul>
-              <strong>Creation date:</strong>{{ musicauthor.creation_date }} <br>
-              <strong>Members:</strong>
-              {{ musicauthor.band_members }}
-              </p>
+              <strong>Creation date:</strong><br>{{ musicauthor.creation_date }} <br><br>
+              <strong>Members:</strong><br>
+              {{ musicauthor.band_members| linebreaksbr }}
             </div>
           </div>
         </div>
