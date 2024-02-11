@@ -31,7 +31,7 @@ class PrivateAlbumTest(TestCase):
                 name=f"album_{album_id}",
                 author=self.user,
                 description="album description",
-                release_date=datetime.date.today()
+                release_date=datetime.date.today(),
             )
 
     def test_view_url_exists(self):
@@ -47,25 +47,22 @@ class PrivateAlbumTest(TestCase):
         response = self.client.get(ALBUM_URL)
         self.assertIn("search_form", response.context)
         self.assertIsInstance(
-            response.context["search_form"],
-            forms.AlbumSearchForm
+            response.context["search_form"], forms.AlbumSearchForm
         )
 
     def test_view_have_creation_form_context(self):
         response = self.client.get(reverse("catalog:album-create"))
         self.assertIsInstance(
-            response.context["form"],
-            forms.AlbumCreationForm
+            response.context["form"], forms.AlbumCreationForm
         )
 
     def test_view_have_update_form_context(self):
         response = self.client.get(
-            reverse("catalog:album-update", args=[Album.objects.first().pk])
+            reverse(
+                "catalog:album-update", args=[Album.objects.first().pk]
+            )
         )
-        self.assertIsInstance(
-            response.context["form"],
-            forms.AlbumUpdateForm
-        )
+        self.assertIsInstance(response.context["form"], forms.AlbumUpdateForm)
 
     def test_existing_pagination(self):
         response = self.client.get(ALBUM_URL)
@@ -103,6 +100,8 @@ class PrivateAlbumTest(TestCase):
 
     def test_assigning_in_album_detail_view_exist(self):
         response = self.client.get(
-            reverse("catalog:toggle-album-assign", args=[Album.objects.first().pk])
+            reverse(
+                "catalog:toggle-album-assign", args=[Album.objects.first().pk]
+            )
         )
         self.assertEqual(response.status_code, 302)

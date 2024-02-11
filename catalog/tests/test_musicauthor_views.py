@@ -43,24 +43,23 @@ class PrivateMusicAuthorTest(TestCase):
         response = self.client.get(MUSICAUTHOR_URL)
         self.assertIn("search_form", response.context)
         self.assertIsInstance(
-            response.context["search_form"],
-            forms.MusicAuthorSearchForm
+            response.context["search_form"], forms.MusicAuthorSearchForm
         )
 
     def test_view_have_creation_form_context(self):
         response = self.client.get(reverse("user:author-create"))
         self.assertIsInstance(
-            response.context["form"],
-            forms.MusicAuthorCreationForm
+            response.context["form"], forms.MusicAuthorCreationForm
         )
 
     def test_view_have_update_form_context(self):
         response = self.client.get(
-            reverse("user:author-update", args=[MusicAuthor.objects.first().pk])
+            reverse(
+                "user:author-update", args=[MusicAuthor.objects.first().pk]
+            )
         )
         self.assertIsInstance(
-            response.context["form"],
-            forms.MusicAuthorUpdateForm
+            response.context["form"], forms.MusicAuthorUpdateForm
         )
 
     def test_existing_pagination(self):
@@ -81,18 +80,27 @@ class PrivateMusicAuthorTest(TestCase):
 
     def test_music_author_detail_view_exist(self):
         response = self.client.get(
-            reverse("user:author-detail", args=[MusicAuthor.objects.first().pk])
+            reverse(
+                "user:author-detail",
+                args=[MusicAuthor.objects.first().pk]
+            )
         )
         self.assertEqual(response.status_code, 200)
 
     def test_update_music_author_detail_view_exist(self):
         response = self.client.get(
-            reverse("user:author-update", args=[MusicAuthor.objects.first().pk])
+            reverse(
+                "user:author-update",
+                args=[MusicAuthor.objects.first().pk]
+            )
         )
         self.assertEqual(response.status_code, 200)
 
     def test_delete_music_author_view_exist(self):
         response = self.client.get(
-            reverse("user:author-delete", args=[MusicAuthor.objects.first().pk])
+            reverse(
+                "user:author-delete",
+                args=[MusicAuthor.objects.first().pk]
+            )
         )
         self.assertEqual(response.status_code, 200)

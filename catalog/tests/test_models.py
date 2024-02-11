@@ -19,8 +19,7 @@ class TestModels(TestCase):
             name="test_album_name",
             author=self.author,
             description="test album description",
-            release_date=datetime.date.today()
-
+            release_date=datetime.date.today(),
         )
         self.track = Track.objects.create(
             name="test_track_name",
@@ -48,8 +47,7 @@ class TestModels(TestCase):
 
     def test_musicauthor_get_absolute_url(self):
         expected_url = reverse(
-            "user:author-detail",
-            kwargs={"pk": self.author.pk}
+            "user:author-detail", kwargs={"pk": self.author.pk}
         )
         actual_url = self.author.get_absolute_url()
         self.assertEqual(expected_url, actual_url)

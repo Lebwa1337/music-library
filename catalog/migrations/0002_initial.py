@@ -10,29 +10,45 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('catalog', '0001_initial'),
+        ("catalog", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='album',
-            name='author',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='albums', to=settings.AUTH_USER_MODEL),
+            model_name="album",
+            name="author",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="albums",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddField(
-            model_name='track',
-            name='album',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tracks', to='catalog.album'),
+            model_name="track",
+            name="album",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="tracks",
+                to="catalog.album",
+            ),
         ),
         migrations.AddField(
-            model_name='track',
-            name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tracks', to=settings.AUTH_USER_MODEL),
+            model_name="track",
+            name="author",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="tracks",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddField(
-            model_name='track',
-            name='genre',
-            field=models.ManyToManyField(related_name='tracks', to='catalog.genre'),
+            model_name="track",
+            name="genre",
+            field=models.ManyToManyField(
+                related_name="tracks", to="catalog.genre"
+            ),
         ),
     ]

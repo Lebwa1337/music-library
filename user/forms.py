@@ -5,7 +5,9 @@ from user.models import MusicAuthor
 
 
 class MusicAuthorCreationForm(UserCreationForm):
-    creation_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    creation_date = forms.DateField(
+        widget=forms.DateInput(attrs={"type": "date"})
+    )
     band_members = forms.CharField(widget=forms.Textarea(attrs={"rows": 3}))
     record_label = forms.CharField(widget=forms.Textarea(attrs={"rows": 1}))
 
@@ -19,7 +21,9 @@ class MusicAuthorCreationForm(UserCreationForm):
 
 
 class MusicAuthorUpdateForm(forms.ModelForm):
-    creation_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    creation_date = forms.DateField(
+        widget=forms.DateInput(attrs={"type": "date"})
+    )
     band_members = forms.CharField(widget=forms.Textarea(attrs={"rows": 4}))
     record_label = forms.CharField(widget=forms.Textarea(attrs={"rows": 1}))
 
@@ -33,5 +37,5 @@ class MusicAuthorSearchForm(forms.Form):
         max_length=100,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by username"})
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"}),
     )

@@ -2,7 +2,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
-from user.forms import MusicAuthorCreationForm, MusicAuthorUpdateForm, MusicAuthorSearchForm
+from user.forms import (
+    MusicAuthorCreationForm,
+    MusicAuthorUpdateForm,
+    MusicAuthorSearchForm,
+)
 from user.models import MusicAuthor
 
 
@@ -49,11 +53,13 @@ class MusicAuthorUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = "creation_forms/Author_form.html"
 
     def get_success_url(self):
-        return reverse_lazy("user:author-detail", kwargs={"pk": self.object.pk})
+        return reverse_lazy(
+            "user:author-detail",
+            kwargs={"pk": self.object.pk}
+        )
 
 
 class MusicAuthorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = MusicAuthor
     template_name = "catalog/music_author_delete_confirm.html"
     success_url = reverse_lazy("catalog:index")
-

@@ -8,7 +8,7 @@ from user.models import MusicAuthor
 class MusicAuthorAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("creation_date",)
     fieldsets = UserAdmin.fieldsets + (
-        (('Personal info', {"fields": ('creation_date',)}),)
+        (("Personal info", {"fields": ("creation_date",)}),)
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (

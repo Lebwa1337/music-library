@@ -35,14 +35,11 @@ class PrivateTrackTest(TestCase):
                     name=f"Album{track_id}",
                     author=self.user,
                     description=f"Description{track_id}",
-                    release_date=datetime.date.today()
+                    release_date=datetime.date.today(),
                 ),
-                lyrics=f"Lyrics{track_id}"
+                lyrics=f"Lyrics{track_id}",
             )
-            track.genre.set([Genre.objects.create(
-                name=f"Genre{track_id}"
-            )]
-            )
+            track.genre.set([Genre.objects.create(name=f"Genre{track_id}")])
 
     def test_view_url_exists(self):
         response = self.client.get(TRACK_URL)
@@ -57,25 +54,18 @@ class PrivateTrackTest(TestCase):
         response = self.client.get(TRACK_URL)
         self.assertIn("search_form", response.context)
         self.assertIsInstance(
-            response.context["search_form"],
-            forms.TrackSearchForm
+            response.context["search_form"], forms.TrackSearchForm
         )
 
     def test_view_have_creation_form_context(self):
         response = self.client.get(reverse("catalog:track-create"))
-        self.assertIsInstance(
-            response.context["form"],
-            forms.TrackForm
-        )
+        self.assertIsInstance(response.context["form"], forms.TrackForm)
 
     def test_view_have_update_form_context(self):
         response = self.client.get(
             reverse("catalog:track-update", args=[Track.objects.first().pk])
         )
-        self.assertIsInstance(
-            response.context["form"],
-            forms.TrackForm
-        )
+        self.assertIsInstance(response.context["form"], forms.TrackForm)
 
     def test_existing_pagination(self):
         response = self.client.get(TRACK_URL)

@@ -13,32 +13,27 @@ class SearchFormsTest(TestCase):
         self.user = get_user_model().objects.create_user(
             username="user_login",
             password="123123password",
-
         )
         self.album1 = Album.objects.create(
             name="Album1",
             author=self.user,
             description="album description",
-            release_date=datetime.date.today()
+            release_date=datetime.date.today(),
         )
         self.album2 = Album.objects.create(
             name="Album2",
             author=self.user,
             description="album description2",
-            release_date=datetime.date.today()
+            release_date=datetime.date.today(),
         )
-        self.genre1 = Genre.objects.create(
-            name="Genre1"
-        )
-        self.genre2 = Genre.objects.create(
-            name="Genre2"
-        )
+        self.genre1 = Genre.objects.create(name="Genre1")
+        self.genre2 = Genre.objects.create(name="Genre2")
         self.track1 = Track.objects.create(
             name="Track1",
             album=self.album1,
             author=self.user,
             duration=datetime.timedelta(minutes=5),
-            lyrics="album lyrics1"
+            lyrics="album lyrics1",
         )
         self.track1.genre.set([self.genre1])
 
@@ -47,7 +42,7 @@ class SearchFormsTest(TestCase):
             album=self.album2,
             author=self.user,
             duration=datetime.timedelta(minutes=6),
-            lyrics="album lyrics2"
+            lyrics="album lyrics2",
         )
         self.track2.genre.set([self.genre2])
 

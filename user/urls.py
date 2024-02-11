@@ -5,15 +5,31 @@ from user.views import (
     MusicAuthorDetailView,
     MusicAuthorUpdateView,
     MusicAuthorDeleteView,
-    MusicAuthorListView
+    MusicAuthorListView,
 )
 
 urlpatterns = [
-    path("musicauthor/create/", MusicAuthorCreateView.as_view(), name='author-create'),
-    path("musicauthor/", MusicAuthorListView.as_view(), name='author-list'),
-    path("musicauthor/<int:pk>/detail/", MusicAuthorDetailView.as_view(), name='author-detail'),
-    path("musicauthor/<int:pk>/update/", MusicAuthorUpdateView.as_view(), name='author-update'),
-    path("musicauthor/<int:pk>/delete/", MusicAuthorDeleteView.as_view(), name='author-delete'),
+    path(
+        "musicauthor/create/",
+        MusicAuthorCreateView.as_view(),
+        name="author-create"
+    ),
+    path("musicauthor/", MusicAuthorListView.as_view(), name="author-list"),
+    path(
+        "musicauthor/<int:pk>/detail/",
+        MusicAuthorDetailView.as_view(),
+        name="author-detail",
+    ),
+    path(
+        "musicauthor/<int:pk>/update/",
+        MusicAuthorUpdateView.as_view(),
+        name="author-update",
+    ),
+    path(
+        "musicauthor/<int:pk>/delete/",
+        MusicAuthorDeleteView.as_view(),
+        name="author-delete",
+    ),
 ]
 
-app_name = 'user'
+app_name = "user"

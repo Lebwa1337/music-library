@@ -25,9 +25,7 @@ class PrivateGenreTest(TestCase):
         number_of_genre = 13
 
         for genre_id in range(number_of_genre):
-            Genre.objects.create(
-                name=f"genre-{genre_id}"
-            )
+            Genre.objects.create(name=f"genre-{genre_id}")
 
     def test_view_url_exists(self):
         response = self.client.get(GENRE_URL)
@@ -42,25 +40,18 @@ class PrivateGenreTest(TestCase):
         response = self.client.get(GENRE_URL)
         self.assertIn("search_form", response.context)
         self.assertIsInstance(
-            response.context["search_form"],
-            forms.GenreSearchForm
+            response.context["search_form"], forms.GenreSearchForm
         )
 
     def test_view_have_creation_form_context(self):
         response = self.client.get(reverse("catalog:genre-create"))
-        self.assertIsInstance(
-            response.context["form"],
-            forms.GenreForm
-        )
+        self.assertIsInstance(response.context["form"], forms.GenreForm)
 
     def test_view_have_update_form_context(self):
         response = self.client.get(
             reverse("catalog:genre-update", args=[Genre.objects.first().pk])
         )
-        self.assertIsInstance(
-            response.context["form"],
-            forms.GenreForm
-        )
+        self.assertIsInstance(response.context["form"], forms.GenreForm)
 
     def test_existing_pagination(self):
         response = self.client.get(GENRE_URL)
