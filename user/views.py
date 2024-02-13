@@ -10,7 +10,6 @@ from user.forms import (
 from user.models import MusicAuthor
 
 
-# Create your views here.
 class MusicAuthorListView(LoginRequiredMixin, generic.ListView):
     model = MusicAuthor
     template_name = "catalog/music_author_list.html"
