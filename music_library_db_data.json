@@ -42,6 +42,13 @@
     }
   },
   {
+    "model": "catalog.genre",
+    "pk": 7,
+    "fields": {
+      "name": "Groove metal"
+    }
+  },
+  {
     "model": "user.musicauthor",
     "pk": 1,
     "fields": {
