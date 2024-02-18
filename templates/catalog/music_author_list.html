@@ -7,9 +7,8 @@
          style="background-image: url('{{ ASSETS_ROOT }}/img/turntable.webp')">
       <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
         <div class="container">
-          <a href="{% url "user:author-create" %}" class="btn btn-outline-primary btn-close-white btn-secondary"
-             style="color: #4a4a4a">
-            <h6>Create</h6></a>
+          <a href="{% url "user:author-create" %}" class="btn btn-outline-secondary btn-white">
+            <h6 style="color: black">Create</h6></a>
           <div class="row justify-content-center">
           <form action="" method="get" class="form-inline">
                   <div class="d-inline-block form-group">
@@ -36,7 +35,7 @@
                         {% for author in musicauthor_list %}
                           <tr>
                             <th scope="row"><a
-                                href="{% url 'user:author-detail' pk=author.id %}">{{ author.username }}</a>
+                                href="{% url 'user:author-detail' pk=author.id %}" style="color: darkgrey">{{ author.username }}</a>
                               {% if author.username == request.user.username %}
                                 (me)
                               {% endif %}

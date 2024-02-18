@@ -6,9 +6,8 @@
          style="background-image: url('{{ ASSETS_ROOT }}/img/turntable.webp');">
       <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
         <div class="container">
-          <a href="{% url "catalog:track-create" %}" class="btn btn-outline-primary btn-close-white btn-secondary"
-             style="color: #4a4a4a">
-            <h6>Create</h6></a>
+          <a href="{% url "catalog:track-create" %}" class="btn btn-outline-secondary btn-white">
+            <h6 style="color: black">Create</h6></a>
           <div class="row justify-content-center">
                 <form action="" method="get" class="form-inline">
                   <div class="d-inline-block form-group">
@@ -34,7 +33,7 @@
                         {% for track in track_list %}
                           <tr>
                             <th scope="row"><a
-                                href="{% url 'catalog:track-detail' pk=track.id %}">{{ track.name }}</a></th>
+                                href="{% url 'catalog:track-detail' pk=track.id %}" style="color: darkgrey">{{ track.name }}</a></th>
                             <th scope="row">{{ track.author }}</th>
                             <th scope="row">{{ track.duration }}</th>
                             <th scope="row">
