@@ -1,0 +1,67 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+  {% include 'includes/navigation.html' %}
+  <section class="intro">
+    <div class="page-header h-100 relative"
+         style="background-image: url('{{ ASSETS_ROOT }}/img/turntable.webp')">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+        <div class="container">
+          <a href="{% url "user:author-create" %}" class="btn btn-outline-secondary btn-white">
+            <h6 style="color: black">Create</h6></a>
+          <div class="row justify-content-center">
+          <form action="" method="get" class="form-inline">
+                  <div class="d-inline-block form-group">
+                    {{ search_form }}
+                  </div>
+                  <input type="submit" value="🔍" class="btn btn-secondary">
+                </form>
+            <div class="col-12">
+              <div class="card bg-dark shadow-2-strong">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    {% if musicauthor_list %}
+                      <table class="table table-borderless text-white mb-0">
+                        <thead>
+                        <tr>
+                          <th scope="col">Author</th>
+                          <th scope="col">Record label</th>
+                          <th scope="col">Creation date</th>
+                          <th scope="col">Number of albums</th>
+                          <th scope="col">Number of tracks</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for author in musicauthor_list %}
+                          <tr>
+                            <th scope="row"><a
+                                href="{% url 'user:author-detail' pk=author.id %}" style="color: darkgrey">{{ author.username }}</a>
+                              {% if author.username == request.user.username %}
+                                (me)
+                              {% endif %}
+                            </th>
+                            <th scope="row">{{ author.record_label }}</th>
+                            <th scope="row">{{ author.creation_date }}</th>
+                            <th scope="row">
+                              {{ author.albums.count }}
+                            </th>
+                            <th scope="row">{{ author.tracks.count }}</th>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+
+                    {% else %}
+                      <p style="text-align: center">There is no authors available</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% include "includes/pagination.html" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

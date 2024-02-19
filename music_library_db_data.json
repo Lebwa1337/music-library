@@ -1,0 +1,368 @@
+[
+  {
+    "model": "catalog.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Trash metal"
+    }
+  },
+  {
+    "model": "catalog.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Power metal"
+    }
+  },
+  {
+    "model": "catalog.genre",
+    "pk": 3,
+    "fields": {
+      "name": "Pop"
+    }
+  },
+ {
+    "model": "catalog.genre",
+    "pk": 4,
+    "fields": {
+      "name": "Rap"
+    }
+  },
+  {
+    "model": "catalog.genre",
+    "pk": 5,
+    "fields": {
+      "name": "Hard rock"
+    }
+  },
+  {
+    "model": "catalog.genre",
+    "pk": 6,
+    "fields": {
+      "name": "Industrial metal"
+    }
+  },
+  {
+    "model": "catalog.genre",
+    "pk": 7,
+    "fields": {
+      "name": "Groove metal"
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "last_login": "2022-08-08T14:14:03Z",
+      "is_superuser": true,
+      "username": "Metallica",
+      "first_name": "Admin",
+      "last_name": "User",
+      "email": "admin.user@taxi.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "band_members": "James Hatfield\nLars Ulrich\nKirk Hammett\nRob Trujillo",
+      "record_label": "Blackened recordings",
+      "creation_date": "1981-11-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Sabaton",
+      "first_name": "Joyce",
+      "last_name": "Byers",
+      "email": "joyce.byers@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:17:04Z",
+      "band_members": "Joakim Brodén\nPär Sundström\nChris Rörland\nHannes Van Dahl",
+      "record_label": "Nuclear Blast",
+      "creation_date": "1999-11-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$QtPol3T7x9quBj4BnbnVwW$UwT4kihkRfSvQEWEeuqVKwMgis2ikKVZfJDBcQMvOKY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ACDC",
+      "first_name": "Jim",
+      "last_name": "Hopper",
+      "email": "jim.hopper@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:19:09Z",
+      "band_members": "Angus Young\nPhil Rudd\nCliff Williams\nBrian Johnson\nStevie Young",
+      "record_label": "Atlantic Records",
+      "creation_date": "1973-11-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Rammstein",
+      "first_name": "Jonathan",
+      "last_name": "Byers",
+      "email": "jonathan.byers@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T14:19:09Z",
+      "band_members": "Till Lindemann\nPaul Landers\nChristoph Schneider\nChristian Lorenz\nRichard Kruspe\nOliver Riedel",
+      "record_label": "Universal Music Group",
+      "creation_date": "1994-01-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Slayer",
+      "first_name": "Dustin",
+      "last_name": "Henderson",
+      "email": "dustin.henderson@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-09T14:19:09Z",
+      "band_members": "Kerry King\nTom Araya\nJeff Hanneman\nDave Lombardo\nPaul Bostaph\nJon Dette\nGary Holt",
+      "record_label": "Metal Blade",
+      "creation_date": "1981-01-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Queen",
+      "first_name": "Mike",
+      "last_name": "Wheeler",
+      "email": "mike.wheeler@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-09T14:19:09Z",
+      "band_members": "Brian May\nRoger Taylor\nFreddie Mercury\nJohn Deacon",
+      "record_label": "EMI",
+      "creation_date": "1970-05-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.musicauthor",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "MegaDeth",
+      "first_name": "Lucas",
+      "last_name": "Sinclair",
+      "email": "lucas.sinclair@taxi.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-09T14:19:09Z",
+      "band_members": "Dave Mustaine\nJames LoMenzo\nDirk Verbeuren\nTeemu Mäntysaari",
+      "record_label": "EMI",
+      "creation_date": "1983-05-11",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 1,
+    "fields": {
+      "name": "Kill em all",
+      "author": 1,
+      "description": "Kill 'Em All is the debut studio album by the American heavy metal band Metallica, released on July 25, 1983, through the independent label Megaforce Records. After forming in 1981, Metallica began by playing shows in local clubs in Los Angeles.",
+      "release_date": "1983-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 2,
+    "fields": {
+      "name": "The Great War",
+      "author": 2,
+      "description": "The Great War is the ninth studio album by Swedish power metal band Sabaton. It was released on 19 July 2019. It is the first studio album to feature guitarist Tommy Johansson. Like many of Sabaton's albums, it is a concept album, this time about World War I, often known as the Great War. The songs cover multiple stories from the war, including those of Manfred von Richthofen, T.E. Lawrence, Alvin York, the Attack of the Dead Men, the Battle of Verdun, and others.",
+      "release_date": "2019-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 3,
+    "fields": {
+      "name": "Highway to Hell",
+      "author": 3,
+      "description": "Highway to Hell is the sixth studio album by Australian hard rock band AC/DC, released on 27 July 1979. It is the first of three albums produced by Robert John \"Mutt\" Lange, and is the last album featuring lead singer Bon Scott, who died on 19 February 1980.",
+      "release_date": "1979-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 4,
+    "fields": {
+      "name": "Herzeleid",
+      "author": 4,
+      "description": "Herzeleid (German pronunciation: [ˈhɛɐ̯t͡səlaɪ̯t]; \"Heartbreak\") is the debut studio album by German Neue Deutsche Härte band Rammstein, first released on 25 September 1995 via Motor Music.",
+      "release_date": "1983-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 5,
+    "fields": {
+      "name": "Reign in Blood",
+      "author": 5,
+      "description": "Reign in Blood is the third studio album by American thrash metal band Slayer, released on October 7, 1986, by Def Jam Recordings.The album was the band's first collaboration with producer Rick Rubin, whose input helped the band's sound evolve. The release date of the album was delayed because of concerns regarding the lyrical subject matter of the opening track \"Angel of Death\", which refers to Josef Mengele and describes acts such as human experimentation that he committed at the Auschwitz concentration camp. The band's members stated that they did not condone Nazism and were merely interested in the subject.",
+      "release_date": "1986-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 6,
+    "fields": {
+      "name": "A Night at the Opera",
+      "author": 6,
+      "description": "A Night at the Opera is the fourth studio album by the British rock band Queen, released on 21 November 1975 by EMI Records in the United Kingdom and Elektra Records in the United States. Produced by Roy Thomas Baker and Queen, it was reportedly the most expensive album ever recorded at the time of its release.",
+      "release_date": "1975-11-11"
+    }
+  },
+  {
+    "model": "catalog.album",
+    "pk": 7,
+    "fields": {
+      "name": "Peace Sells… but Who’s Buying?",
+      "author": 7,
+      "description": "Peace Sells... but Who's Buying? is the second studio album by American thrash metal band Megadeth, released on September 19, 1986, through Capitol Records. The project was originally handled by Combat Records, resulting in the original mix of the album being co-produced by Randy Burns. Capitol Records then bought the rights to the album and hired another producer named Paul Lani to mix it himself. The recording of the album was difficult for the band, because of the ongoing drug issues the members had at the time.",
+      "release_date": "1986-11-11"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 1,
+    "fields": {
+      "name": "Seek and Destroy",
+      "duration": "544",
+      "author": 1,
+      "album": 1,
+      "genre": [
+        1
+      ],
+      "lyrics": "All right\nWe are scanning the scene in the city tonight\nWe are looking for you to start up a fight\nThere is an evil feeling in our brains\nBut there's nothing new, you know it drives us insane\nRunning\nOn our way, hiding\nYou will pay dying\nOne thousand deaths\nRunning\nOn our way, hiding\nYou will pay dying\nOne thousand deaths\nC'mon now, searching\nSeek and Destroy\nSearching, now\nSeek and Destroy\nLet's see you\nSearching, now\nSeek and Destroy\nSearching, now\nSeek and Destroy\nThere is no escape and that is for sure\nThis is the end we won't take any more\nSay goodbye to the world you live in\nYou've always been taking but now you're giving\nRunning\nOn our way, hiding\nYou will pay, dying\nOne thousand deaths\nRunning\nOn our way, hiding\nYou will pay dying\nOne thousand deaths\nLet's go now, searching, now\nSeek and Destroy\nC'mon everybody, searching\nSeek and Destroy\nSearching, now\nSeek and Destroy\nSearching, now\nSeek and Destroy\nLet's go, c'mon\nBrains are on fire with the feeling to kill\nAnd it will not go away until our dreams are fulfilled\nThere is only one thing on our minds\nDon't try running away 'cause you're the one we will find\nRunning\nOn our way, hiding\nYou will pay dying\nOne thousand deaths\nRunning\nOn our way, hiding\nYou will pay dying\nOne thousand deaths\nSearching, now\nSeek and Destroy\nSearching, c'mon\nSeek and Destroy\nSearching, now\nSeek and Destroy\nC'mon now\nSearching\nSeek and Destroy, aha ha ha"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 2,
+    "fields": {
+      "name": "Great War",
+      "duration": "355",
+      "author": 2,
+      "album": 2,
+      "genre": [
+        2
+      ],
+      "lyrics": "Where dead men lies I'm paralyzed, my brothers' eyes are gone\nAnd he shall be buried here, nameless marks his grave\nMother home, get a telegram and shed a tear of grief\nMud and blood, in foreign land, trying to understand\nWhere is this greatness I've been told?\nThis is the lies that we've been sold\nIs this a worthy sacrifice?\nGreat War\nAnd I cannot take more\nGreat tour\nI keep on marching on\nI play the great score\nThere will be no encore\nGreat War\nThe war to end all wars\nI'm standing here, I'm full of fear, with bodies at my feet\nOver there in the other trench, bullets wear my name\nLead ahead, as the captain said and show them no remorse\nWho am I to understand? What have I become?\nI do my duties, pay the price\nI'll do the worthy sacrifice\nI know my deeds are not in vain\nGreat War\nAnd I cannot take more\nGreat tour\nI keep on marching on\nI play the great score\nThere will be no encore\nGreat War\nThe war to end all wars\nAnd feet by feet\nWe pay the price of a mile here\nThough men were falling, we see heroes rise\nWe face the heat\nAs we are fighting until the dawn\nSo follow me and we will write our own history\nGreat War\nAnd I cannot take more\nGreat tour\nI keep on marching on\nI play the great score\nThere will be no encore\nGreat War\nThe war to end all wars"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 3,
+    "fields": {
+      "name": "Highway to Hell",
+      "duration": "300",
+      "author": 3,
+      "album": 3,
+      "genre": [
+        5
+      ],
+      "lyrics": "Livin' easy\nLovin' free\nSeason ticket on a one way ride\nAskin' nothin'\nLeave me be\nTakin' everythin' in my stride\nDon't need reason\nDon't need rhyme\nAin't nothin' that I'd rather do\nGoin' down\nParty time\nMy friends are gonna be there too\nI'm on the highway to hell\nOn the highway to hell\nHighway to hell\nI'm on the highway to hell\nNo stop signs\nSpeed limit\nNobody's gonna slow me down\nLike a wheel\nGonna spin it\nNobody's gonna mess me around\nHey satan\nPayin' my dues\nPlayin' in a rockin' band\nHey mumma\nLook at me\nI'm on the way to the promised land\nI'm on the highway to hell\nHighway to hell\nI'm on the highway to hell\nHighway to hell\nDon't stop me\nI'm on the highway to hell\nOn the highway to hell\nHighway to hell\nI'm on the highway to hell\n(Highway to hell) I'm on the highway to hell\n(Highway to hell) highway to hell\n(Highway to hell) highway to hell\n(Highway to hell)\nAnd I'm goin' down\nAll the way\nI'm on the highway to hell"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 4,
+    "fields": {
+      "name": "Du riechst so gut",
+      "duration": "400",
+      "author": 4,
+      "album": 4,
+      "genre": [
+        7
+      ],
+      "lyrics": "Der Wahnsinn\nIst nur eine schmale Brücke\nDie Ufer sind Vernunft und Trieb\nIch steig' dir nach\nDas Sonnenlicht den Geist verwirrt\nEin blindes Kind, das vorwärts kriecht\nWeil es seine Mutter riecht\nIch finde dich\nDie Spur ist frisch und auf die Brücke\nTropft dein Schweiß, dein warmes Blut\nIch seh' dich nicht\nIch riech' dich nur, ich spüre dich\nEin Raubtier, das vor Hunger schreit\nWittere ich dich meilenweit\nDu riechst so gut\nDu riechst so gut\nIch geh' dir hinterher\nDu riechst so gut\nIch finde dich\n- So gut, so gut\nIch steig' dir nach\nDu riechst so gut\nGleich hab' ich dich\nJetzt hab' ich dich\nIch warte, bis es dunkel ist\nDann fass' ich an die nasse Haut\nVerrat' mich nicht\nOh siehst du nicht, die Brücke brennt\nHör auf zu schreien und wehr' dich nicht\nWeil sie sonst auseinander bricht\nDu riechst so gut\nDu riechst so gut\nIch geh' dir hinterher\nDu riechst so gut\nIch finde dich\n- So gut, so gut\nIch steig' dir nach\nDu riechst so gut\nGleich hab' ich dich\nDu riechst so gut\nDu riechst so gut\nIch geh' dir hinterher\nDu riechst so gut\nIch finde dich\n- So gut, so gut.\nIch fass' dich an\nDu riechst so gut\nJetzt hab' ich dich\nDu riechst so gut\nDu riechst so gut\nIch geh' dir hinterher"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 5,
+    "fields": {
+      "name": "Angel of death",
+      "duration": "544",
+      "author": 5,
+      "album": 5,
+      "genre": [
+        1
+      ],
+      "lyrics": "Auschwitz, the meaning of pain\nThe way that I want you to die\nSlow death, immense decay\nShowers that cleanse you of your life\nForced in like cattle, you run\nStripped of your life's worth\nHuman mice, for the Angel of Death\nFour hundred thousand more to die\nAngel of Death\nMonarch to the kingdom of the dead\nSadistic, surgeon of demise\nSadist of the noblest blood\nDestroying without mercy\nTo benefit the Aryan race\nSurgery with no anesthesia\nFeel the knife pierce you intensely\nInferior, no use to mankind\nStrapped down, screaming out to die\nAngel of Death\nMonarch to the kingdom of the dead\nInfamous butcher\nAngel of Death\nPumped with fluid, inside your brain\nPressure in your skull begins pushing through your eyes\nBurning flesh, drips away\nTest of heat burns your skin, your mind starts to boil\nFrigid cold, cracks your limbs\nHow long can you last in this frozen water burial?\nSewn together, joining heads\nJust a matter of time 'til you rip yourselves apart\nMillions laid out in their crowded tombs\nSickening ways to achieve the holocaust\nSeas of blood, bury life\nSmell your death as it burns deep inside of you\nAbacinate, eyes that bleed\nPraying for the end of your wide awake nightmare\nWings of pain reach out for you\nHis face of death staring down, your blood's running cold\nInjecting cells, dying eyes\nFeeding on the screams of the mutant he's creating\nPathetic harmless victims left to die\nRancid Angel of Death flying free\nAngel of Death\nMonarch to the kingdom of the dead\nInfamous butcher\nAngel of Death\nAngel of Death"
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 6,
+    "fields": {
+      "name": "Bohemian Rhapsody",
+      "duration": "450",
+      "author": 6,
+      "album": 6,
+      "genre": [
+        5,
+        3
+      ],
+      "lyrics": "Is this the real life? Is this just fantasy?\nCaught in a landslide, no escape from reality\nOpen your eyes, look up to the skies and see\nI'm just a poor boy, I need no sympathy\nBecause I'm easy come, easy go, little high, little low\nAny way the wind blows doesn't really matter to me, to me\nMama, just killed a man\nPut a gun against his head, pulled my trigger, now he's dead\nMama, life had just begun\nBut now I've gone and thrown it all away\nMama, ooh, didn't mean to make you cry\nIf I'm not back again this time tomorrow\nCarry on, carry on as if nothing really matters\nToo late, my time has come\nSends shivers down my spine, body's aching all the time\nGoodbye, everybody, I've got to go\nGotta leave you all behind and face the truth\nMama, ooh (any way the wind blows)\nI don't wanna die\nI sometimes wish I'd never been born at all\nI see a little silhouetto of a man\nScaramouche, Scaramouche, will you do the Fandango?\nThunderbolt and lightning, very, very frightening me\n(Galileo) Galileo, (Galileo) Galileo, Galileo Figaro, magnifico\nBut I'm just a poor boy, nobody loves me\nHe's just a poor boy from a poor family\nSpare him his life from this monstrosity\nEasy come, easy go, will you let me go?\nبِسْمِ ٱللَّٰهِ\nNo, we will not let you go (let him go)\nبِسْمِ ٱللَّٰهِ\nWe will not let you go (let him go)\nبِسْمِ ٱللَّٰهِ\nWe will not let you go (let me go)\nWill not let you go (let me go)\nNever, never, never, never let me go\nNo, no, no, no, no, no, no\nOh, mamma mia, mamma mia\nMamma mia, let me go\nBeelzebub has a devil put aside for me, for me, for me\nSo you think you can stone me and spit in my eye?\nSo you think you can love me and leave me to die?\nOh, baby, can't do this to me, baby\nJust gotta get out, just gotta get right outta here\nOoh\nOoh, yeah, ooh, yeah\nNothing really matters, anyone can see\nNothing really matters\nNothing really matters to me"
+
+    }
+  },
+  {
+    "model": "catalog.track",
+    "pk": 7,
+    "fields": {
+      "name": "Peace Sells",
+      "duration": "500",
+      "author": 7,
+      "album": 7,
+      "genre": [
+        1
+      ],
+      "lyrics": "What do you mean I \"don't believe in God?\"\nI talk to him every day\nWhat do you mean I \"don't support your system?\"\nI go to court when I have to\nWhat do you mean I \"can't get to work on time?\"\nGot nothing better to do\nAnd, what do you mean I \"don't pay my bills?\"\nWhy, do you think I'm broke? Huh?\n\nIf there's a new way, I'll be the first in line\nBut it better work this time\n\nWhat do you mean I \"hurt your feelings?\"\nI didn't know you had any feelings\nWhat do you mean I \"ain't kind?\"\nI'm just not your kind\nWhat do you mean I \"couldn't be the president\nOf the United States of America?\"\nTell me something\nIt's still \"we the people,\" right?\n\nIf there's a new way, I'll be the first in line\nBut it better work this time\n\nCan you put a price on peace?\n\nPeace, peace sells\nPeace, peace sells!\n\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\n\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\nPeace sells, but who's buyin'?\n\nNo, no-no-no-no\nPeace sells\n(Peace sells)\nPeace sells!"
+    }
+  }
+]
